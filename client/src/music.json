@@ -1,0 +1,18 @@
+[
+    {
+        "id":1,
+        "title": "My First Song",
+        "location": "music/myFirstSong",
+        "mood": "Happy"
+    },{
+        "id":2,
+        "title": "My Second Song",
+        "location": "music/mySecondSong",
+        "mood": "Sad"
+    },{
+        "id":3,
+        "title": "My Third Song",
+        "location": "music/myThirdSong",
+        "mood": "Angry"
+    }
+]
