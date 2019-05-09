@@ -8,11 +8,19 @@ class MusicArea extends Component {
     music
   };
 
-  playSong = song => {
-    alert("song playing");
-  };
 
-  render() {
+
+  
+  
+  
+  render(props) {
+    
+   const playSong = song => {
+      alert("song playing");
+      console.log(song);
+      this.props.func();
+    };
+
     return (
       <Container fluid>
         <Row>
@@ -23,7 +31,7 @@ class MusicArea extends Component {
             // displays all music
             .map((music, index) => 
                 <AudioBtn key={index} 
-                onClick={this.playSong} 
+                onClick={playSong} 
                 src={music.location} 
                 songTitle={music.title} 
                 id={music.id} />)}

@@ -12,8 +12,9 @@ class Main extends Component {
     link1:"",
     link2:"home",
     lyrics: "",
-    lyricTitle: "",
+    lyricTitle: "New Song",
     music: "",
+    // titleEdited: false,
   };
 
   
@@ -25,21 +26,20 @@ class Main extends Component {
     });
   };
 
-  
+  music = event => {
+    console.log(event);
+  }
 
-  save = project => {
+  save = () => {
+    console.log(this.state);
     alert("project saved");
-    event.preventDefault();
     API.saveLyric({
       userEmail: this.state.userEmail,
       lyricTitle: this.state.lyricTitle,
       lyrics: this.state.lyrics,
     })
       .then(res => {
-        this.setState({
-        userEmail: "",
-        userPassword: ""})
-        this.findUser(res)
+        alert(`Saved ${this.state.lyricTitle}!`);
       })
       .catch(err => console.log(err));
   };
@@ -61,17 +61,16 @@ class Main extends Component {
         <Row>
           <Col size="md-8 sm-12">
             <div style={this.border}>
-              <h2>Lyrics go here</h2>
-              <form>
-                <TextArea name="lyrics" onChange={this.handleInputChange} />
+              <h2>{this.state.lyricTitle}</h2>
+                <Input name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="your title" />
+                <TextArea name="lyrics" value={this.state.lyrics} onChange={this.handleInputChange} />
                 <FormBtn onClick={this.save}>Save</FormBtn>
-              </form>
             </div>
           </Col>
           <Col size="md-4 sm-12">
             <div style={this.border}>
-            <h2>Music goes here</h2>
-              <MusicArea />
+            <h2>Inspiration Area</h2>
+              <MusicArea func={this.music}/>
             </div>
           </Col>
         </Row>
