@@ -25,4 +25,8 @@ export default {
   saveLyric: function(userData) {
     return axios.post("/api/lyrics", userData);
   },
+  // Saves a Lyric to the database
+  updateLyric: function(userData) {
+    return axios.put("/api/lyrics", userData);
+  },
 };
