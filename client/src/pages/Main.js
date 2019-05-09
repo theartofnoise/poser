@@ -14,7 +14,6 @@ class Main extends Component {
     lyrics: "",
     lyricTitle: "New Song",
     music: "",
-    // titleEdited: false,
   };
 
   
@@ -28,13 +27,14 @@ class Main extends Component {
 
   music = event => {
     console.log(event);
+    this.setState({music: event})
   }
 
   save = () => {
     console.log(this.state);
     alert("project saved");
     API.saveLyric({
-      userEmail: this.state.userEmail,
+      author: this.state.userEmail,
       lyricTitle: this.state.lyricTitle,
       lyrics: this.state.lyrics,
     })

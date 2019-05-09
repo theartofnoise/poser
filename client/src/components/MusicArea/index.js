@@ -17,8 +17,7 @@ class MusicArea extends Component {
     
    const playSong = song => {
       alert("song playing");
-      console.log(song);
-      this.props.func();
+      this.props.func(song);
     };
 
     return (
@@ -30,8 +29,8 @@ class MusicArea extends Component {
             // .sort((a, b) => {return 0.5 - Math.random();})
             // displays all music
             .map((music, index) => 
-                <AudioBtn key={index} 
-                onClick={playSong} 
+                <AudioBtn name={music.title} key={index} 
+                onClick={playSong.bind(this, music.title)} 
                 src={music.location} 
                 songTitle={music.title} 
                 id={music.id} />)}

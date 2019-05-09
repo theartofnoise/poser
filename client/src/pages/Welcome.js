@@ -37,8 +37,8 @@ class Welcome extends Component {
           this.setState({
             loggedIn: true,
             link1: "main",
-            userEmail: "",
-            userPassword: ""
+            // userEmail: "",
+            // userPassword: ""
           })
           localStorage.setItem("userEmail", this.state.userEmail)
           localStorage.setItem("userPassword", this.state.userPassword)
