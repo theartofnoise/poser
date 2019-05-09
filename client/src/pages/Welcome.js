@@ -85,8 +85,7 @@ class Welcome extends Component {
           <Row>
             {this.state.loggedIn ? (
               <div>
-                <UserProjects />
-                <FormBtn onClick={this.logOut}>Log Out</FormBtn>
+                <UserProjects logOut={this.logOut}/>
               </div>
             ) : (
               <Col size="lg-6 md-12">

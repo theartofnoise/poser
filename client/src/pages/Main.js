@@ -7,9 +7,13 @@ import MusicArea from "../components/MusicArea";
 
 class Main extends Component {
   state = {
+    userEmail: localStorage.getItem("userEmail"),
     logo:"pose",
     link1:"",
     link2:"home",
+    lyrics: "",
+    lyricTitle: "",
+    music: "",
   };
 
   
@@ -25,6 +29,19 @@ class Main extends Component {
 
   save = project => {
     alert("project saved");
+    event.preventDefault();
+    API.saveLyric({
+      userEmail: this.state.userEmail,
+      lyricTitle: this.state.lyricTitle,
+      lyrics: this.state.lyrics,
+    })
+      .then(res => {
+        this.setState({
+        userEmail: "",
+        userPassword: ""})
+        this.findUser(res)
+      })
+      .catch(err => console.log(err));
   };
 
   border = {
@@ -46,7 +63,7 @@ class Main extends Component {
             <div style={this.border}>
               <h2>Lyrics go here</h2>
               <form>
-                <TextArea onChange={this.handleInputChange} />
+                <TextArea name="lyrics" onChange={this.handleInputChange} />
                 <FormBtn onClick={this.save}>Save</FormBtn>
               </form>
             </div>

@@ -8,10 +8,11 @@ import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Projects from "../components/Projects";
 
-
 class UserProjects extends Component {
-  state = {
-        
+  state = {};
+
+  logOutCB = () => {
+    alert("yes");
   };
 
   handleInputChange = event => {
@@ -27,24 +28,25 @@ class UserProjects extends Component {
     console.log(this.state);
   };
 
-
-  render() {
+  render(props) {
     return (
       <Container fluid>
         <Row>
           <Col size="sm-12">
-            <h1>Find your UserProjects Here</h1> 
+            <h1>Find your UserProjects Here</h1>
             <Link to="/main">
-            <FormBtn>New Project</FormBtn> 
-            </Link>            
+              <FormBtn>New Project</FormBtn>
+            </Link>
+              <FormBtn onClick={this.props.logOut}>Log Out</FormBtn>
           </Col>
         </Row>
         <Row>
-          <Col size="md-3">
-            <Projects 
-              projName="Project Name" 
-              author="React Remix" 
-              mood="Angry" />           
+          <Col size="md-2">
+            <Projects
+              projName="Project Name"
+              author="React Remix"
+              mood="Angry"
+            />
           </Col>
         </Row>
       </Container>
