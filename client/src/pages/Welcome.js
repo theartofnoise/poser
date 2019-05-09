@@ -49,7 +49,8 @@ class Welcome extends Component {
   };
 
 
-  saveUser = () => {
+  saveUser = (event) => {
+    event.preventDefault();
     API.saveUser({
       userEmail: this.state.userEmail,
       userPassword: this.state.userPassword,
@@ -89,7 +90,6 @@ class Welcome extends Component {
               </div>
             ) : (
               <Col size="lg-6 md-12">
-                <form>
                   <Input
                     name="userEmail"
                     value={this.state.userEmail}
@@ -108,7 +108,6 @@ class Welcome extends Component {
                     Log In
                   </FormBtn>
                   <FormBtn type="submit" onClick={this.saveUser}>Create New Account</FormBtn>
-                </form>
               </Col>
             )}
           </Row>
