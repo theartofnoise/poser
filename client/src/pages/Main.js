@@ -14,6 +14,7 @@ class Main extends Component {
     lyrics: "",
     lyricTitle: "New Song",
     music: "",
+    author: "",
   };
 
   
@@ -32,9 +33,9 @@ class Main extends Component {
 
   save = () => {
     console.log(this.state);
-    alert("project saved");
     API.saveLyric({
-      author: this.state.userEmail,
+      userEmail: this.state.userEmail,
+      author: this.state.author,
       lyricTitle: this.state.lyricTitle,
       lyrics: this.state.lyrics,
     })
@@ -61,8 +62,9 @@ class Main extends Component {
         <Row>
           <Col size="md-8 sm-12">
             <div style={this.border}>
-              <h2>{this.state.lyricTitle}</h2>
-                <Input name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="your title" />
+              <h2>{this.state.lyricTitle}{this.state.author?" by ":""}{this.state.author}</h2>
+                <Input name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="Your Title" />
+                <Input name="author" type="text" onChange={this.handleInputChange} placeholder="Author" />
                 <TextArea name="lyrics" value={this.state.lyrics} onChange={this.handleInputChange} />
                 <FormBtn onClick={this.save}>Save</FormBtn>
             </div>
