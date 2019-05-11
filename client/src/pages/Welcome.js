@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import Main from "./Main";
-
 import UserProjects from "./UserProjects";
 import Nav from "../components/Nav";
 import Jumbo from '../components/Jumbotron';
-import {  MDBInput, MDBCard, MDBCardBody, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardImage, MDBCardTitle, MDBCardText } from 'mdbreact';
+import {  MDBInput, MDBCard, MDBCardBody, MDBBtn, MDBRow, MDBCol, MDBCardImage, MDBCardTitle, MDBCardText } from 'mdbreact';
 
 class Welcome extends Component {
   state = {
@@ -20,7 +17,7 @@ class Welcome extends Component {
     userId: "",
   };
 
-  
+  // Gets all the lyrics for the email thats logged in
   componentWillMount() {
     console.log(this.state.userEmail);
     API.getLyric({

@@ -38,6 +38,7 @@ class Main extends Component {
       author: this.state.author,
       lyricTitle: this.state.lyricTitle,
       lyrics: this.state.lyrics,
+      music: this.state.music,
     })
       .then(res => {
         alert(`Saved ${this.state.lyricTitle}!`);
