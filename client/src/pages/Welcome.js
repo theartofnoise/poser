@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
-import Main from "./Main";
+import { Input, FormBtn } from "../components/Form";
 import UserProjects from "./UserProjects";
 import Nav from "../components/Nav";
 
@@ -14,12 +9,27 @@ class Welcome extends Component {
   state = {
     //loggedIn: false,
     loggedIn: localStorage.getItem("userEmail") === null ? false: true,
-    userEmail: "",
+    userEmail: localStorage.getItem("userEmail"),
     userPassword: "",
     logo: "pose",
     link1: "",
-    link2: ""
+    link2: "",
+    userId: "",
   };
+
+  
+  componentWillMount() {
+    console.log(this.state.userEmail);
+    API.getLyric({
+      userEmail: this.state.userEmail,
+    })
+      .then(res => {
+        console.log("working!!!!");
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  }
+  
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -28,15 +38,17 @@ class Welcome extends Component {
     });
   };
 
-  logIn = () => {
+  logIn = (event) => {
+    event.preventDefault();
      API.loginUser({
         userEmail: this.state.userEmail
       }).then(res => {
         if(res.data){
-          console.log("logged in")
+          console.log(res.data)
           this.setState({
             loggedIn: true,
             link1: "main",
+            userId: res.data._id,
             // userEmail: "",
             // userPassword: ""
           })
@@ -45,6 +57,7 @@ class Welcome extends Component {
         } else {
           alert("wrong user name or pasword");
         }
+        console.log(this.state.userId);
       })
   };
 
