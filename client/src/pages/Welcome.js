@@ -15,17 +15,19 @@ class Welcome extends Component {
     link1: "",
     link2: "",
     userId: "",
+    projects:[],
   };
 
   // Gets all the lyrics for the email thats logged in
-  componentWillMount() {
+  loadLyrics() {
+
+    console.log("CDM");
     console.log(this.state.userEmail);
-    API.getLyric({
-      userEmail: this.state.userEmail,
-    })
+    API.getLyric(this.state.userEmail)
       .then(res => {
         console.log("working!!!!");
         console.log(res.data);
+        this.setState({projects:res.data})
       })
       .catch(err => console.log(err));
   }
@@ -44,9 +46,7 @@ class Welcome extends Component {
      API.loginUser({
         userEmail: this.state.userEmail
       }).then(res => {
-        console.log(res.data)
         if(res.data){
-          console.log(res.data)
           this.setState({
             loggedIn: true,
             link1: "main",
@@ -56,6 +56,7 @@ class Welcome extends Component {
           })
           localStorage.setItem("userEmail", this.state.userEmail)
           localStorage.setItem("userPassword", this.state.userPassword)
+          this.loadLyrics();
         } else {
           alert("wrong user name or pasword");
         }
@@ -99,7 +100,7 @@ class Welcome extends Component {
           <MDBRow>
             {this.state.loggedIn ? (
               <div>
-                <UserProjects logOut={this.logOut}/>
+                <UserProjects projects={this.state.projects} logOut={this.logOut}/>
               </div>
             ) : (
               <div>

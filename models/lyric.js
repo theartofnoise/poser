@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const lyricSchema = new Schema({
-  // _id: Schema.Types.ObjectId,
   userEmail: { type: String, required: true },
   lyricTitle: { type: String, required: true },
   author: { type: String, required: true },
