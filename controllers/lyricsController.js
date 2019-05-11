@@ -1,4 +1,5 @@
 const db = require("../models");
+const util = require('util')
 
 // Defining methods for the booksController
 module.exports = {
@@ -10,13 +11,15 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
+    console.log("req.params.id");
+    console.log(util.inspect(req.params.id, {showHidden: false, depth: null}))
+;
     db.Lyric
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log(req.body);
     db.Lyric
       .create(req.body)
       .then(dbModel => res.json(dbModel))

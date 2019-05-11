@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import Main from "./Main";
+
 import UserProjects from "./UserProjects";
 import Nav from "../components/Nav";
 import Jumbo from '../components/Jumbotron';
@@ -15,8 +16,23 @@ class Welcome extends Component {
     userPassword: "",
     logo: "pose",
     link1: "",
-    link2: ""
+    link2: "",
+    userId: "",
   };
+
+  
+  componentWillMount() {
+    console.log(this.state.userEmail);
+    API.getLyric({
+      userEmail: this.state.userEmail,
+    })
+      .then(res => {
+        console.log("working!!!!");
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  }
+  
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -26,17 +42,18 @@ class Welcome extends Component {
   };
 
   logIn = (event) => {
-    console.log(this.state.userEmail)
+
     event.preventDefault();
      API.loginUser({
         userEmail: this.state.userEmail
       }).then(res => {
         console.log(res.data)
         if(res.data){
-          console.log("logged in")
+          console.log(res.data)
           this.setState({
             loggedIn: true,
             link1: "main",
+            userId: res.data._id,
             // userEmail: "",
             // userPassword: ""
           })
@@ -45,6 +62,7 @@ class Welcome extends Component {
         } else {
           alert("wrong user name or pasword");
         }
+        console.log(this.state.userId);
       })
   };
 
