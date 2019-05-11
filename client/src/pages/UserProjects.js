@@ -23,10 +23,10 @@ class UserProjects extends Component {
     alert("Submitted");
     console.log(this.state);
   };
-
   
 
   render(props) {
+    console.log(this.props.projects)
     return (
       <Container fluid>
         <Row>
@@ -39,13 +39,11 @@ class UserProjects extends Component {
           </Col>
         </Row>
         <Row>
-          <Col size="md-2">
-            <Projects
-              projName="Project Name"
-              author="React Remix"
-              mood="Angry"
-            />
+          
+            {this.props.projects.map((project, i) =>{
+      return <Col size="md-2"> <Projects author={project.author} title={project.lyricTitle} />
           </Col>
+    })}
         </Row>
       </Container>
     );

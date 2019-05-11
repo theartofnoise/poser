@@ -8,8 +8,8 @@ router.route("/")
 
 // Matches with "/api/books/:id"
 router
-  .route("/:id")
-  .get(lyricsController.findById)
+  .route("/:userEmail")
+  .get(lyricsController.findByEmail)
   .put(lyricsController.update)
   .delete(lyricsController.remove);
 
