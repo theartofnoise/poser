@@ -1,0 +1,29 @@
+#jumbo
+{
+    margin-top: 0px;
+    padding: 0;
+    opacity: .90;
+}
+
+#mainText
+{
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    padding: 250px;
+    color: white;
+}
+
+#backGroundVideo
+{
+    position: relative;
+}
+
+h1{
+    font-size: 75px;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif!important
+}

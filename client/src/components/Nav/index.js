@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { MDBNav, MDBNavLink, MDBContainer, MDBRow, MDBCol, MDBNavbar } from "mdbreact";
+import "./style.css";
 
 function Nav(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+    <MDBNavbar color="elegant-color" dark expand="md"
+      
+    >
+      <MDBContainer style={{ zIndex: 1, background: "none" }}>
       <Link className="navbar-brand" to="/">
         {props.logo}
       </Link>
@@ -19,7 +24,8 @@ function Nav(props) {
       <Link className="navbar-brand float-right" to="/">
         {props.link4}
       </Link>
-    </nav>
+      </MDBContainer>
+    </MDBNavbar>
   );
 }
 
