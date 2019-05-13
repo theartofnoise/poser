@@ -20,13 +20,8 @@ class Welcome extends Component {
 
   // Gets all the lyrics for the email thats logged in
   loadLyrics() {
-
-    console.log("CDM");
-    console.log(this.state.userEmail);
     API.getLyric(this.state.userEmail)
       .then(res => {
-        console.log("working!!!!");
-        console.log(res.data);
         this.setState({projects:res.data})
       })
       .catch(err => console.log(err));
@@ -56,8 +51,6 @@ class Welcome extends Component {
             loggedIn: true,
             link1: "main",
             userId: res.data._id,
-            // userEmail: "",
-            // userPassword: ""
           })
           localStorage.setItem("userEmail", this.state.userEmail)
           localStorage.setItem("userPassword", this.state.userPassword)
@@ -65,7 +58,6 @@ class Welcome extends Component {
         } else {
           alert("wrong user name or pasword");
         }
-        console.log(this.state.userId);
       })
   };
 

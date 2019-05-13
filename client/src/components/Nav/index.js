@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MDBNav, MDBNavLink, MDBContainer, MDBRow, MDBCol, MDBNavbar } from "mdbreact";
+import { MDBContainer, MDBNavbar } from "mdbreact";
 import "./style.css";
 
 function Nav(props) {

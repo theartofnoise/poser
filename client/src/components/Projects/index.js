@@ -5,12 +5,12 @@ import React from "react";
 function Projects(props) {
 
   return (
-    <button onClick={props.onClick} className="btn btn-success" role="button" tabIndex="0">
+    <div onClick={props.onClick} className="btn btn-success" role="button" tabIndex="0">
       <br/>
       title: {props.title} <br/>
       by: {props.author} <br/>
       
-    </button>
+    </div>
   );
 }
 

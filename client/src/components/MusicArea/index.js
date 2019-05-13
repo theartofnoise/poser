@@ -16,7 +16,7 @@ class MusicArea extends Component {
   render(props) {
     
    const playSong = song => {
-      alert("song playing");
+      alert("Now Playing "+song);
       this.props.func(song);
     };
 

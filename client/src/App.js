@@ -32,9 +32,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/" logToggle={this.logToggle} loggedIn={this.state.loggedIn} component={Welcome} />
           {this.state.loggedIn&&[
-          <Route exact path="/main" component={Main} />,
-          <Route exact path="/userProjects" component={UserProjects} />,
-          <Route exact path="/books/:id" component={Detail} />]}
+          <Route exact path="/main" component={Main}  key={0}/>,
+          <Route exact path="/userProjects" component={UserProjects}  key={1} />,
+          <Route exact path="/books/:id" component={Detail} key={2} />]}
           <Route component={NoMatch} />
         </Switch>
     </Router>
