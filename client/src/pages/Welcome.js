@@ -9,7 +9,7 @@ class Welcome extends Component {
   state = {
     //loggedIn: false,
     loggedIn: localStorage.getItem("userEmail") === null ? false:true,
-    userEmail: "",
+    userEmail: localStorage.getItem("userEmail"),
     userPassword: "",
     logo: "pose",
     link1: "",
@@ -30,6 +30,11 @@ class Welcome extends Component {
         this.setState({projects:res.data})
       })
       .catch(err => console.log(err));
+  }
+  
+  
+  componentDidMount() {
+    this.loadLyrics();
   }
   
 
@@ -91,13 +96,12 @@ class Welcome extends Component {
 
   render() {
     return (
-      <>
+      <div>
         <Nav
           logo={this.state.logo}
           link1={this.state.link1}
           link2={this.state.link2}
         />
-          <MDBRow>
             {this.state.loggedIn ? (
               <div>
                 <UserProjects projects={this.state.projects} logOut={this.logOut}/>
@@ -167,10 +171,8 @@ class Welcome extends Component {
                   </MDBCard>
                 </MDBCol>
       </MDBRow>
-      </div>
-            )}
+      
             
-          </MDBRow>
           <div>
           <MDBRow>
             <MDBCol lg="3">
@@ -213,8 +215,10 @@ class Welcome extends Component {
               </MDBCard>
             </MDBCol>
           </MDBRow>
-          </div>        
-      </>
+          </div> 
+          </div>
+            )}       
+      </div>
     );
   }
 }
