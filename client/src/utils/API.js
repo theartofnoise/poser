@@ -32,4 +32,7 @@ export default {
   updateLyric: function(userData) {
     return axios.put("/api/lyrics", userData);
   },
+  getLyricById: function(id) {
+    return axios.get("/api/lyrics/lyrics/" + id);
+  }
 };

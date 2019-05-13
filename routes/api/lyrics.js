@@ -13,4 +13,8 @@ router
   .put(lyricsController.update)
   .delete(lyricsController.remove);
 
+router
+  .route("/lyrics/:id")
+  .get(lyricsController.getLyricById);
+
 module.exports = router;

@@ -42,7 +42,7 @@ class UserProjects extends Component {
         <Row>
           
             {this.props.projects.map((project, i) =>{
-      return <Col  key={i} size="md-2"> <Link to="/main"><Projects onClick={this.loadLyric.bind(this, project.lyricTitle)} author={project.author} title={project.lyricTitle} /></Link>
+      return <Col  key={i} size="md-2"> <Link to={"/main/" + project._id}><Projects onClick={this.loadLyric.bind(this, project.lyricTitle)} author={project.author} title={project.lyricTitle} /></Link>
           </Col>
     })}
         </Row>
