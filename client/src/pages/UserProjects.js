@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { FormBtn } from "../components/Form";
 import Projects from "../components/Projects";
+import music from "../music.json";
+
 
 class UserProjects extends Component {
-  state = {};
-
-  logOutCB = () => {
-    alert("yes");
+  state = {
+    music
   };
 
   handleInputChange = event => {
@@ -21,12 +21,13 @@ class UserProjects extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     alert("Submitted");
-    console.log(this.state);
   };
   
+  loadLyric = (event) => {
+    console.log(event);
+  }
 
   render(props) {
-    console.log(this.props.projects)
     return (
       <Container fluid>
         <Row>
@@ -41,7 +42,7 @@ class UserProjects extends Component {
         <Row>
           
             {this.props.projects.map((project, i) =>{
-      return <Col size="md-2"> <Projects author={project.author} title={project.lyricTitle} />
+      return <Col  key={i} size="md-2"> <Link to="/main"><Projects onClick={this.loadLyric.bind(this, project.lyricTitle)} author={project.author} title={project.lyricTitle} /></Link>
           </Col>
     })}
         </Row>

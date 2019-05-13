@@ -15,8 +15,13 @@ class Main extends Component {
     lyricTitle: "New Song",
     music: "",
     author: "",
+    textArea:"some test text",
   };
 
+  componentDidMount(props) {
+    document.getElementById("lyrics").value = "loaded value";
+  }
+  
   
 
   handleInputChange = event => {
@@ -64,9 +69,9 @@ class Main extends Component {
           <Col size="md-8 sm-12">
             <div style={this.border}>
               <h2>{this.state.lyricTitle}{this.state.author?" by ":""}{this.state.author}</h2>
-                <Input name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="Your Title" />
-                <Input name="author" type="text" onChange={this.handleInputChange} placeholder="Author" />
-                <TextArea name="lyrics" value={this.state.lyrics} onChange={this.handleInputChange} />
+                <Input id="lyricTitle" name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="Your Title" />
+                <Input id="author" name="author" type="text" onChange={this.handleInputChange} placeholder="Author" />
+                <TextArea id="lyrics" name="lyrics" value={this.state.lyrics} onChange={this.handleInputChange}>{this.state.textArea}</TextArea>
                 <FormBtn onClick={this.save}>Save</FormBtn>
             </div>
           </Col>
