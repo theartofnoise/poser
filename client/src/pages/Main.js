@@ -15,13 +15,26 @@ class Main extends Component {
     lyricTitle: "New Song",
     music: "",
     author: "",
-    textArea:"some test text",
+    textArea:"some test text", 
+    lyricData: {lyrics:"",
+                lyricsTitle:"",
+                author:""}, 
   };
 
-  componentDidMount(props) {
-    document.getElementById("lyrics").value = "loaded value";
+  componentDidMount() {
+    if (this.props.match.params.id) {
+    API.getLyricById(this.props.match.params.id)
+      .then( (res) => {
+
+        this.setState({ lyrics: res.data.lyrics,
+                        author: res.data.author,
+                        lyricTitle: res.data.lyricTitle });
+        this.setState({ lyricData: res.data });
+        console.log( this.state.lyricData );
+      })
+      .catch(err => console.log(err));
+    }
   }
-  
   
 
   handleInputChange = event => {
@@ -69,9 +82,9 @@ class Main extends Component {
           <Col size="md-8 sm-12">
             <div style={this.border}>
               <h2>{this.state.lyricTitle}{this.state.author?" by ":""}{this.state.author}</h2>
-                <Input id="lyricTitle" name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="Your Title" />
-                <Input id="author" name="author" type="text" onChange={this.handleInputChange} placeholder="Author" />
-                <TextArea id="lyrics" name="lyrics" value={this.state.lyrics} onChange={this.handleInputChange}>{this.state.textArea}</TextArea>
+                <Input value={this.state.lyricTitle} id="lyricTitle" name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="Your Title" />
+                <Input value={this.state.author} id="author" name="author" type="text" onChange={this.handleInputChange} placeholder="Author" />
+                <TextArea value={this.state.lyrics} id="lyrics" name="lyrics" onChange={this.handleInputChange}></TextArea>
                 <FormBtn onClick={this.save}>Save</FormBtn>
             </div>
           </Col>

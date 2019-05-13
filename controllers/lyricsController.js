@@ -20,7 +20,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByEmail: function(req, res) {
-    console.log('controller666');
     console.log(req.params);
     db.Lyric
       .find(req.params)
@@ -28,9 +27,17 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  getLyricById: function(req, res) {
+    console.log('controller working');
+    console.log(req.params);
+    db.Lyric
+      .findOne({_id:req.params.id})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     db.Lyric
-      .create(req.body)
+      .update({_id:req.body.id},req.body, {upsert:true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

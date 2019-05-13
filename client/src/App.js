@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Welcome from "./pages/Welcome";
 import Main from "./pages/Main";
@@ -34,7 +33,7 @@ class App extends Component {
           {this.state.loggedIn&&[
           <Route exact path="/main" component={Main}  key={0}/>,
           <Route exact path="/userProjects" component={UserProjects}  key={1} />,
-          <Route exact path="/books/:id" component={Detail} key={2} />]}
+          <Route exact path="/main/:id" component={Main} key={2} />]}
           <Route component={NoMatch} />
         </Switch>
     </Router>
