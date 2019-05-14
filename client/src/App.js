@@ -8,7 +8,7 @@ import UserProjects from "./pages/UserProjects";
 class App extends Component {
 
   state = {
-    loggedIn:false,
+    loggedIn:localStorage.getItem("userEmail")?true:false,
     logo: "pose",
     link1: "",
     link2: "",
@@ -37,10 +37,9 @@ onLoggedIn = () => {
       <Route exact path="/" logToggle={this.logToggle} loggedIn={this.state.loggedIn} component={Welcome} />
       {this.state.loggedIn&&[
       <Route exact path="/main" component={Main}  key={0}/>,
-      <Route exact path="/userProjects" component={UserProjects}  key={1} />,
-      <Route exact path="/main/:id" component={Main} key={2} />]}
+      <Route exact path="/main/:id" component={Main} key={2} />,
+      <Route component={UserProjects}  key={1} />]}
     </Switch>}
-      <Route component={NoMatch} />
 </div>
 </Router>
     

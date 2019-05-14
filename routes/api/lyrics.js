@@ -9,12 +9,12 @@ router.route("/")
 // Matches with "/api/books/:id"
 router
   .route("/:userEmail")
-  .get(lyricsController.findByEmail)
-  .put(lyricsController.update)
-  .delete(lyricsController.remove);
-
-router
+  .get(lyricsController.findByEmail);
+  
+  router
   .route("/lyrics/:id")
-  .get(lyricsController.getLyricById);
+  .put(lyricsController.update)
+  .get(lyricsController.getLyricById)
+  .delete(lyricsController.remove);
 
 module.exports = router;

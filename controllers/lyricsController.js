@@ -37,7 +37,7 @@ module.exports = {
   },
   create: function(req, res) {
     db.Lyric
-      .update({_id:req.body.id},req.body, {upsert:true})
+      .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

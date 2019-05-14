@@ -16,6 +16,7 @@ class Main extends Component {
     music: "",
     author: "",
     textArea:"some test text", 
+    editing:false,
     lyricData: {lyrics:"",
                 lyricsTitle:"",
                 author:""}, 
@@ -29,7 +30,8 @@ class Main extends Component {
         this.setState({ lyrics: res.data.lyrics,
                         author: res.data.author,
                         lyricTitle: res.data.lyricTitle });
-        this.setState({ lyricData: res.data });
+        this.setState({ lyricData: res.data,
+        editing:true });
         console.log( this.state.lyricData );
       })
       .catch(err => console.log(err));
@@ -51,7 +53,8 @@ class Main extends Component {
 
   save = () => {
     console.log(this.state);
-    API.saveLyric({
+    if (this.state.editing) {
+    API.updateLyric(this.props.match.params.id, {
       userEmail: this.state.userEmail,
       author: this.state.author,
       lyricTitle: this.state.lyricTitle,
@@ -62,6 +65,18 @@ class Main extends Component {
         alert(`Saved ${this.state.lyricTitle}!`);
       })
       .catch(err => console.log(err));
+    } else {
+      API.saveLyric({
+      userEmail: this.state.userEmail,
+      author: this.state.author,
+      lyricTitle: this.state.lyricTitle,
+      lyrics: this.state.lyrics,
+      music: this.state.music,
+    })
+      .then(res => {
+        alert(`Saved ${this.state.lyricTitle}!`);
+      })
+      .catch(err => console.log(err));}
   };
 
   border = {
