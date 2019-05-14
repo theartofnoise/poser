@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import NoMatch from "./pages/NoMatch";
 import Welcome from "./pages/Welcome";
 import Main from "./pages/Main";
 import UserProjects from "./pages/UserProjects";
@@ -14,12 +13,6 @@ class App extends Component {
     link2: "",
   }
 
-componentWillUpdate() {
-  if(!localStorage.getItem("userEmail")&&this.state.loggedIn)
-   this.setState({
-    loggedIn:localStorage.getItem("userEmail")?true:false
-  })
-}
 
 
 onLoggedIn = () => {
