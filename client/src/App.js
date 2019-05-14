@@ -8,36 +8,42 @@ import UserProjects from "./pages/UserProjects";
 class App extends Component {
 
   state = {
-    loggedIn:true,
+    loggedIn:false,
     logo: "pose",
     link1: "",
     link2: "",
   }
 
-  logToggle = () => {
-    alert("it worked");
-    this.setState({
-        loggedIn:!this.state.loggedIn,
-        link1: "main",
-        link2: "home",
-    })
-};
+//   logToggle = () => {
+//     alert("it worked");
+//     this.setState({
+//         loggedIn:!this.state.loggedIn,
+//         link1: "main",
+//         link2: "home",
+//     })
+// };
+
+onLoggedIn = () => {
+  this.setState({loggedIn: true})
+}
 //  renders
 
   render() {
   return (
-    <div>
     <Router>
-        <Switch>
-          <Route exact path="/" logToggle={this.logToggle} loggedIn={this.state.loggedIn} component={Welcome} />
-          {this.state.loggedIn&&[
-          <Route exact path="/main" component={Main}  key={0}/>,
-          <Route exact path="/userProjects" component={UserProjects}  key={1} />,
-          <Route exact path="/main/:id" component={Main} key={2} />]}
-          <Route component={NoMatch} />
-        </Switch>
-    </Router>
-      </div>
+      <div>
+    {!this.state.loggedIn?<Welcome onLoggedIn={this.onLoggedIn} />:
+    <Switch>
+      <Route exact path="/" logToggle={this.logToggle} loggedIn={this.state.loggedIn} component={Welcome} />
+      {this.state.loggedIn&&[
+      <Route exact path="/main" component={Main}  key={0}/>,
+      <Route exact path="/userProjects" component={UserProjects}  key={1} />,
+      <Route exact path="/main/:id" component={Main} key={2} />]}
+    </Switch>}
+      <Route component={NoMatch} />
+</div>
+</Router>
+    
   );
 }
 }
