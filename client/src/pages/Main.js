@@ -3,7 +3,8 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Nav from "../components/Nav";
-import MusicArea from "../components/MusicArea";
+import Spotify from "../components/Spotify/Spotify";
+// import MusicArea from "../components/MusicArea";
 
 class Main extends Component {
   state = {
@@ -106,7 +107,8 @@ class Main extends Component {
           <Col size="md-4 sm-12">
             <div style={this.border}>
             <h2>Inspiration Area</h2>
-              <MusicArea func={this.music}/>
+              <Spotify />
+              {/* <MusicArea func={this.music} /> */}
             </div>
           </Col>
         </Row>
