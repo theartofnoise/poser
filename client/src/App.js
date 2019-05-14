@@ -14,14 +14,13 @@ class App extends Component {
     link2: "",
   }
 
-//   logToggle = () => {
-//     alert("it worked");
-//     this.setState({
-//         loggedIn:!this.state.loggedIn,
-//         link1: "main",
-//         link2: "home",
-//     })
-// };
+componentWillUpdate() {
+  if(!localStorage.getItem("userEmail")&&this.state.loggedIn)
+   this.setState({
+    loggedIn:localStorage.getItem("userEmail")?true:false
+  })
+}
+
 
 onLoggedIn = () => {
   this.setState({loggedIn: true})
