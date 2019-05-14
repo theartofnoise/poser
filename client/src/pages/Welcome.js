@@ -54,6 +54,7 @@ class Welcome extends Component {
           })
           localStorage.setItem("userEmail", this.state.userEmail)
           localStorage.setItem("userPassword", this.state.userPassword)
+          this.props.onLoggedIn();
           this.loadLyrics();
         } else {
           alert("wrong user name or pasword");

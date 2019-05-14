@@ -12,7 +12,7 @@ class Main extends Component {
     link1:"",
     link2:"home",
     lyrics: "",
-    lyricTitle: "New Song",
+    lyricTitle: "",
     music: "",
     author: "",
     textArea:"some test text", 
