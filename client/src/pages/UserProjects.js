@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter} from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { FormBtn } from "../components/Form";
 import Projects from "../components/Projects";
@@ -27,6 +27,13 @@ class UserProjects extends Component {
     console.log(event);
   }
 
+  logOut = () => {
+    localStorage.removeItem("userEmail")
+    localStorage.removeItem("userPassword");
+    document.location.href="/";
+    };
+  
+
   render(props) {
     return (
       <Container fluid>
@@ -36,7 +43,7 @@ class UserProjects extends Component {
             <Link to="/main">
               <FormBtn>New Project</FormBtn>
             </Link>
-              <FormBtn onClick={this.props.logOut}>Log Out</FormBtn>
+              <FormBtn onClick={this.logOut}>Log Out</FormBtn>
           </Col>
         </Row>
         <Row>
@@ -51,4 +58,4 @@ class UserProjects extends Component {
   }
 }
 
-export default UserProjects;
+export default withRouter(UserProjects);

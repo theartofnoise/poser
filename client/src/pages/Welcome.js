@@ -3,6 +3,7 @@ import API from "../utils/API";
 import UserProjects from "./UserProjects";
 import Nav from "../components/Nav";
 import Jumbo from '../components/Jumbotron';
+import { withRouter} from "react-router-dom";
 import {  MDBInput, MDBCard, MDBCardBody, MDBBtn, MDBRow, MDBCol, MDBCardImage, MDBCardTitle, MDBCardText } from 'mdbreact';
 
 class Welcome extends Component {
@@ -47,13 +48,13 @@ class Welcome extends Component {
         userEmail: this.state.userEmail
       }).then(res => {
         if(res.data){
-          this.setState({
-            loggedIn: true,
-            link1: "main",
-            userId: res.data._id,
-          })
-          localStorage.setItem("userEmail", this.state.userEmail)
-          localStorage.setItem("userPassword", this.state.userPassword)
+          // this.setState({
+          //   loggedIn: true,
+          //   link1: "main",
+          //   userId: res.data._id,
+          // })
+          localStorage.setItem("userEmail", this.state.userEmail);
+          localStorage.setItem("userPassword", this.state.userPassword);
           this.props.onLoggedIn();
           this.loadLyrics();
         } else {
@@ -85,6 +86,7 @@ class Welcome extends Component {
       loggedIn: false,
       mainLink: ""
     });
+    this.props.logOut();
   };
 
   render() {
@@ -216,4 +218,4 @@ class Welcome extends Component {
   }
 }
 
-export default Welcome;
+export default withRouter(Welcome);
