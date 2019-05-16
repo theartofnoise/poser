@@ -31,6 +31,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByStyleAndMood: function(req, res) {
+    console.log(req.params);
+    db.Music
+      .find({"$**": {$style: req.params, $mood: req.params}})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findByTempo: function(req, res) {
     console.log('controller working');
     console.log(req.params);

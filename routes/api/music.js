@@ -19,4 +19,8 @@ router
   .route("/music/:style")
   .get(musicController.findByStyle)
 
+router
+  .route("/music/:style/:mood")
+  .get(musicController.findByStyleAndMood)
+
 module.exports = router;

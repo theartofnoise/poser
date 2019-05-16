@@ -47,10 +47,10 @@ class Main extends Component {
     });
   };
 
-  music = event => {
-    console.log(event);
-    this.setState({music: event})
-  }
+  // music = event => {
+  //   console.log(event);
+  //   this.setState({music: event})
+  // }
 
   save = () => {
     console.log(this.state);

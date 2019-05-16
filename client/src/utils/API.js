@@ -47,5 +47,8 @@ export default {
   getMusic: function() {
     return axios.get("/api/music/");
   },
+  getMoreMusic: function(style, mood) {
+    return axios.get("api/music/" + style + mood);
+  },
 
 };
