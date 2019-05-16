@@ -34,5 +34,18 @@ export default {
   },
   getLyricById: function(id) {
     return axios.get("/api/lyrics/lyrics/" + id);
-  }
+  },
+  getMusicByMood: function(id) {
+    return axios.get("/api/music/" + id);
+  },
+  getMusicByStyle: function(id) {
+    return axios.get("/api/music/" + id);
+  },
+  getMusicByTempo: function(id) {
+    return axios.get("/api/music/" + id);
+  },
+  getMusic: function() {
+    return axios.get("/api/music/");
+  },
+
 };

@@ -1,56 +1,58 @@
 const db = require("../models");
-const util = require('util');
-
+// const util = require('util')
 
 
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-    db.Lyric
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
+    db.Music
+      .find()
+      .then(dbModel => {res.json(dbModel)
+    })
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    console.log("req.params.id");
-    console.log(util.inspect(req.params.id, {showHidden: false, depth: null}))
-;
-    db.Lyric
+    db.Music
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findByEmail: function(req, res) {
+  findByMood: function(req, res) {
     console.log(req.params);
-    db.Lyric
+    db.Music
       .find(req.params)
-      // .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  getLyricById: function(req, res) {
+  findByStyle: function(req, res) {
+    console.log(req.params);
+    db.Music
+      .find({"$**": {$style: req.params}})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findByTempo: function(req, res) {
     console.log('controller working');
     console.log(req.params);
-    db.Lyric
-      .findOne({_id:req.params.id})
+    db.Music
+      .find({"$**": {$style: req.params,$mood: req.params}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.Lyric
+    db.Music
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Lyric
+    db.Music
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.Lyric
+    db.Music
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
