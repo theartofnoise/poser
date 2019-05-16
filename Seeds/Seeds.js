@@ -1,5 +1,4 @@
-[
-  {
+[{
     "title": "My First Song",
     "location": "../public/music/myFirstSong",
     "mood": "Happy",
@@ -19,5 +18,4 @@
     "mood": "Angry",
     "style": "Rock",
     "tempo": "Med"
-  }
-]
+  }]

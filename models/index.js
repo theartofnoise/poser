@@ -1,4 +1,5 @@
 module.exports = {
   Lyric: require("./lyric"),
-  User: require("./user")
+  User: require("./user"),
+  Music: require("./music")
 };
