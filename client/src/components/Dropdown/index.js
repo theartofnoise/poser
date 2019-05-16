@@ -8,7 +8,7 @@ const DropdownPage = (props) => {
         {props.title}
       </MDBDropdownToggle>
       <MDBDropdownMenu basic>
-        {props.items.map(item => <MDBDropdownItem onClick={() => props.onChange(item)}>{item}</MDBDropdownItem>)}
+        {props.items.map((item, key) => <MDBDropdownItem key={key} onClick={() => props.onChange(item)}>{item}</MDBDropdownItem>)}
       </MDBDropdownMenu>
     </MDBDropdown>
   );
