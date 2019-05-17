@@ -27,7 +27,7 @@ class Main extends Component {
     if (this.props.match.params.id) {
     API.getLyricById(this.props.match.params.id)
       .then( (res) => {
-
+        console.log(res);
         this.setState({ lyrics: res.data.lyrics,
                         author: res.data.author,
                         lyricTitle: res.data.lyricTitle });
@@ -46,6 +46,8 @@ class Main extends Component {
       [name]: value
     });
   };
+
+  
 
   // music = event => {
   //   console.log(event);
@@ -95,7 +97,7 @@ class Main extends Component {
       <Container fluid>
         <h1>Main Page Stuff</h1>
         <Row>
-          <Col size="md-8 sm-12">
+          <Col size="md-6 sm-12">
             <div style={this.border}>
               <h2>{this.state.lyricTitle}{this.state.author?" by ":""}{this.state.author}</h2>
                 <Input value={this.state.lyricTitle} id="lyricTitle" name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="Your Title" />
@@ -104,7 +106,7 @@ class Main extends Component {
                 <FormBtn onClick={this.save}>Save</FormBtn>
             </div>
           </Col>
-          <Col size="md-4 sm-12">
+          <Col size="md-6 sm-12">
             <div style={this.border}>
             <h2>Inspiration Area</h2>
               {/* <Spotify /> */}
