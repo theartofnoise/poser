@@ -12,9 +12,7 @@ class App extends Component {
     link1: "",
     link2: "",
   }
-
-
-
+  
 onLoggedIn = () => {
   this.setState({loggedIn: true})
 }
