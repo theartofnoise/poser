@@ -161,7 +161,7 @@ class Main extends Component {
         <MDBCol md="4" className="mb-r">
         <MDBCard className="cascading-admin-card">
         <div className="admin-up">
-        <MDBIcon icon="play" className="primary-color"/>
+        <MDBIcon icon="music" className="primary-color"/>
         <div className="data">
         <p>CHOOSE YOUR INSPIRATION</p>
         </div>

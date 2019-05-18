@@ -94,15 +94,17 @@ class UserProjects extends Component {
     </div>
 
         <MDBContainer id="mainPad">
-          <MDBRow>
-            <MDBCol size="sm-12">
-              <h1>Find your UserProjects Here</h1>
-              <Link to="/main">
-                <FormBtn>New Project</FormBtn>
-              </Link>
-                <FormBtn onClick={this.logOut}>Log Out</FormBtn>
-            </MDBCol>
+        <MDBRow>
+          <MDBCol size="sm-12">
+          <MDBRow><h1>Your Projects Here</h1>
           </MDBRow>
+          <MDBRow><Link to="/main">
+          <FormBtn>New Project</FormBtn>
+          </Link>
+          <FormBtn onClick={this.logOut}>Log Out</FormBtn>
+          </MDBRow>
+          </MDBCol>
+        </MDBRow>
           <MDBRow>
             {this.state.projects.map((project, i) =>{
             return <MDBCol  key={i} size="md-2"> <Link to={"/main/" + project._id}><Projects onClick={this.loadLyric.bind(this, project.lyricTitle)} author={project.author} title={project.lyricTitle} /></Link>
