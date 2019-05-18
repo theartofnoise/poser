@@ -29,7 +29,7 @@ class Main extends Component {
     if (this.props.match.params.id) {
     API.getLyricById(this.props.match.params.id)
       .then( (res) => {
-
+        console.log(res);
         this.setState({ lyrics: res.data.lyrics,
                         author: res.data.author,
                         lyricTitle: res.data.lyricTitle });
@@ -48,6 +48,8 @@ class Main extends Component {
       [name]: value
     });
   };
+
+  
 
   // music = event => {
   //   console.log(event);
@@ -97,6 +99,7 @@ class Main extends Component {
       <>
         <div id="videobackground">        
         <div>
+// <<<<<<< alex3
           <MDBNavbar color="bg-secondary" fixed="top" dark expand="md" scrolling transparent className="mb-4">
             <MDBContainer>
               <MDBNavbarBrand>
@@ -175,6 +178,34 @@ class Main extends Component {
         </div>
         </div>
       </>
+// old shit
+//         <Nav logo={this.state.logo}
+//           link1={this.state.link1}
+//           link2={this.state.link2}
+//            />
+//       <Container fluid>
+//         <h1>Main Page Stuff</h1>
+//         <Row>
+//           <Col size="md-6 sm-12">
+//             <div style={this.border}>
+//               <h2>{this.state.lyricTitle}{this.state.author?" by ":""}{this.state.author}</h2>
+//                 <Input value={this.state.lyricTitle} id="lyricTitle" name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="Your Title" />
+//                 <Input value={this.state.author} id="author" name="author" type="text" onChange={this.handleInputChange} placeholder="Author" />
+//                 <TextArea value={this.state.lyrics} id="lyrics" name="lyrics" onChange={this.handleInputChange}></TextArea>
+//                 <FormBtn onClick={this.save}>Save</FormBtn>
+//             </div>
+//           </Col>
+//           <Col size="md-6 sm-12">
+//             <div style={this.border}>
+//             <h2>Inspiration Area</h2>
+//               {/* <Spotify /> */}
+//               <MusicArea func={this.music} />
+//             </div>
+//           </Col>
+//         </Row>
+//       </Container>
+//       </div>
+// end
     );
   }
 }
