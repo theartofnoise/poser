@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import UserProjects from "./UserProjects";
-import Nav from "../components/Nav";
+
 import Jumbo from '../components/Jumbotron';
 import { withRouter} from "react-router-dom";
 import {  MDBInput, MDBCard, MDBCardBody, MDBBtn, MDBRow, MDBCol, MDBCardImage, MDBCardTitle, MDBCardText } from 'mdbreact';
+import MainPageBackground from '../components/MainPageBackground'
 
 class Welcome extends Component {
   state = {
@@ -92,126 +93,20 @@ class Welcome extends Component {
   render() {
     return (
       <div>
-        <Nav
+        {/* <Nav
           logo={this.state.logo}
           link1={this.state.link1}
           link2={this.state.link2}
-        />
+        /> */}
             {this.state.loggedIn ? (
               <div>
                 <UserProjects projects={this.state.projects} logOut={this.logOut}/>
               </div>
             ) : (
               <div>
-        <Jumbo />
-              <MDBRow>
-                <MDBCol lg="6">
-                  <MDBCard >
-                    <MDBCardBody>
-                      <form>
-                        <p className="h4 text-center py-4">Log In</p>
-                        <div className="grey-text">
-                          <MDBInput
-                            name="userEmail"
-                            value={this.state.userEmail}
-                            onChange={this.handleInputChange}
-                            type="email"
-                            placeholder="email"
-                          />                  
-                          <MDBInput
-                            name="userPassword"
-                            value={this.state.userPassword}
-                            onChange={this.handleInputChange}
-                            type="password"
-                            placeholder="password"
-                          />
-                        </div>
-                        <div className="text-center py-4 mt-3">
-                          <MDBBtn color="cyan" type="submit" onClick={this.logIn}>
-                          Log In
-                          </MDBBtn>
-                        </div>
-                      </form>
-                    </MDBCardBody>
-                  </MDBCard>
-                  </MDBCol>
-                  <MDBCol lg="6">
-                  <MDBCard>
-                    <MDBCardBody>
-                      <form>
-                        <p className="h4 text-center py-4">Sign up</p>
-                        <div className="grey-text">
-                          <MDBInput
-                            name="userEmail"
-                            value={this.state.userEmail}
-                            onChange={this.handleInputChange}
-                            type="email"
-                            placeholder="email"
-                          />                  
-                          <MDBInput
-                            name="userPassword"
-                            value={this.state.userPassword}
-                            onChange={this.handleInputChange}
-                            type="password"
-                            placeholder="password"
-                          />
-                        </div>
-                        <div className="text-center py-4 mt-3">
-                          <MDBBtn color="cyan" type="submit" onClick={this.saveUser}>
-                          Register
-                          </MDBBtn>
-                        </div>
-                      </form>
-                    </MDBCardBody>
-                  </MDBCard>
-                </MDBCol>
-      </MDBRow>
-      
-            
-          <div>
-          <MDBRow>
-            <MDBCol lg="3">
-              <MDBCard style={{ width: "22rem" }}>
-                <MDBCardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
-                  <MDBCardBody>
-                  <MDBCardTitle>Card title</MDBCardTitle>
-                  <MDBCardText>
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card&apos;s content.
-                  </MDBCardText>
-                  <MDBBtn href="#">MDBBtn</MDBBtn>
-                  </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
-            <MDBCol lg="3">
-              <MDBCard style={{ width: "22rem" }}>
-                <MDBCardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
-                  <MDBCardBody>
-                  <MDBCardTitle>Card title</MDBCardTitle>
-                  <MDBCardText>
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card&apos;s content.
-                  </MDBCardText>
-                  <MDBBtn href="#">MDBBtn</MDBBtn>
-                  </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
-            <MDBCol lg="3">
-              <MDBCard style={{ width: "22rem" }}>
-                <MDBCardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
-                  <MDBCardBody>
-                  <MDBCardTitle>Card title</MDBCardTitle>
-                  <MDBCardText>
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card&apos;s content.
-                  </MDBCardText>
-                  <MDBBtn href="#">MDBBtn</MDBBtn>
-                  </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
-          </MDBRow>
+              <MainPageBackground onLoggedIn={this.props.onLoggedIn} />
           </div> 
-          </div>
+          
             )}       
       </div>
     );
