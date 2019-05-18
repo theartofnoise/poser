@@ -10,6 +10,7 @@ class MusicArea extends Component {
   state = {
     // music,
     dbMusic: [],
+    filterMusic: [],
     style: "",
     mood: "",
     songLoc:"",
@@ -31,17 +32,43 @@ class MusicArea extends Component {
   },false);
     API.getMusic()
       .then(res => {
-        this.setState({ dbMusic: res.data });
+        this.setState({ dbMusic: res.data, filterMusic: res.data });
       })
       .catch(err => console.log(err));
   }
- speed = () => {
-      
+
+ styleDropdown = (e) => {
+   console.log(e);
+   this.setState({ style: e })
+   if (e == "All") {
+     this.setState({filterMusic:this.state.dbMusic})
+   } else {
+   let array = this.state.dbMusic;
+   let filter = array.filter(function (element) {
+     return (element.style === e)
+   }) 
+   this.setState({ filterMusic: filter});
+   console.log(this.state.dbMusic);
+   }
+}
+
+ moodDropdown = (e) => {
+  this.setState({ mood: e })
+   if (e == "All") {
+     this.setState({filterMusic:this.state.dbMusic})
+   } else {
+   let array = this.state.dbMusic;
+   let filter = array.filter(function (element) {
+     return (element.mood === e)
+   }) 
+   this.setState({ filterMusic: filter});
+   console.log(this.state.dbMusic);
+   }
   }
+
   render(props) {
     // this.props.func(song.title);
     const playSong = song => {
-      console.log(song);
       this.setState({ songLoc: "/"+song.location });
     };
 
@@ -51,25 +78,25 @@ class MusicArea extends Component {
       <Container fluid>
         <Row>
           <Col size="sm-12">
-            <audio id="myAudio" src={this.state.songLoc+".mp3"} controls autoPlay loop>
+            <audio id="myAudio" src={this.state.songLoc} controls autoPlay loop>
               <source type="audio/mp3" />
               Your browser does not support the audio element.
             </audio>
             <Dropdown
-              onChange={e => this.setState({ style: e })}
+              onChange={e => this.styleDropdown(e)}
               title={this.state.style || "Style"}
-              items={["Rock", "Pop", "Acoustic", "Metal", "Electronic"]}
+              items={["All","Rock", "Pop", "Acoustic", "Metal", "Electronic"]}
             />
             <Dropdown
-              onChange={e => this.setState({ mood: e })}
+              onChange={e => this.moodDropdown(e)}
               title={this.state.mood || "Mood"}
-              items={["Happy", "Sad", "Angry", "Indifferent"]}
+              items={["All","Happy", "Sad", "Angry", "Indifferent"]}
             />
             <form>
-  <input id="pbr"  type="range" value="1" min="0.5" max="1.5" step="0.1" />
+  <input id="pbr" defaultValue="1" type="range" min="0.5" max="1.5" step="0.1" />
   <p>Playback Rate <span id="currentPbr">1</span></p>
 </form>
-            {this.state.dbMusic
+            {this.state.filterMusic
               // randomizes music
               // .sort((a, b) => {return 0.5 - Math.random();})
               // displays all music
