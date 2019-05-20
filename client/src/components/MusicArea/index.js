@@ -4,7 +4,7 @@ import Dropdown from "../Dropdown";
 // import music from "../../music.json";
 import API from "../../utils/API";
 import SliderPage from "../Slider"
-import { MDBRow, MDBContainer, MDBCol, MDBCard } from "mdbreact";
+import { MDBRow, MDBContainer, MDBCol } from "mdbreact";
 
 
 class MusicArea extends Component {
