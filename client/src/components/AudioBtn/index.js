@@ -1,12 +1,16 @@
 import React from "react";
-import "./style.css"
+import { MDBBtn, MDBIcon, MDBTable, MDBTableBody } from "mdbreact";
 
-// audio button
 function AudioBtn(props) {
   return (
-    <div onClick={props.onClick} className="btn btn-success" role="button" tabIndex="0">
-      {props.songTitle}
-    </div>
+    <MDBTable hover responsive>
+      <MDBTableBody>
+        <tr>
+          <td><MDBBtn tag="a" size="lg" gradient="purple"onClick={props.onClick}><MDBIcon icon="play" /></MDBBtn></td>
+          <td>{props.songTitle}</td>
+        </tr>
+      </MDBTableBody>
+    </MDBTable>    
   );
 }
 

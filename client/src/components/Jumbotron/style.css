@@ -1,8 +1,9 @@
 #jumbo
 {
-    margin-top: 0px;
+    margin-top: 1px;
     padding: 0;
-    opacity: .90;
+    opacity: .68;
+    max-height: 20%;
 }
 
 #mainText
@@ -20,6 +21,7 @@
 #backGroundVideo
 {
     position: relative;
+    
 }
 
 h1{

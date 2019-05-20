@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import { Col, Row, Container } from "../Grid";
+import React, { Component, } from "react";
 import AudioBtn from "../AudioBtn";
 import Dropdown from "../Dropdown";
 // import music from "../../music.json";
 import API from "../../utils/API";
+import SliderPage from "../Slider"
+import { MDBRow, MDBContainer, MDBCol, MDBCard } from "mdbreact";
 
 
 class MusicArea extends Component {
@@ -75,44 +76,52 @@ class MusicArea extends Component {
    
 
     return (
-      <Container fluid>
-        <Row>
-          <Col size="sm-12">
-            <audio id="myAudio" src={this.state.songLoc} controls autoPlay loop>
-              <source type="audio/mp3" />
-              Your browser does not support the audio element.
-            </audio>
-            <Dropdown
-              onChange={e => this.styleDropdown(e)}
-              title={this.state.style || "Style"}
-              items={["All","Rock", "Pop", "Acoustic", "Metal", "Electronic"]}
-            />
-            <Dropdown
-              onChange={e => this.moodDropdown(e)}
-              title={this.state.mood || "Mood"}
-              items={["All","Happy", "Sad", "Angry", "Indifferent"]}
-            />
-            <form>
-  <input id="pbr" defaultValue="1" type="range" min="0.5" max="1.5" step="0.1" />
-  <p>Playback Rate <span id="currentPbr">1</span></p>
-</form>
-            {this.state.filterMusic
-              // randomizes music
-              // .sort((a, b) => {return 0.5 - Math.random();})
-              // displays all music
-              .map((music, index) => (
-                <AudioBtn
-                  name={music.title}
-                  key={index}
-                  onClick={playSong.bind(this, music)}
-                  src={music.location}
-                  songTitle={music.title}
-                  id={music.id}
-                />
-              ))}
-          </Col>
-        </Row>
-      </Container>
+      <MDBContainer fluid>
+        <MDBRow>
+          <MDBCol size="sm-12">
+              <MDBContainer>
+                <MDBRow className="mx-auto mt-1">
+                  <audio id="myAudio" src={this.state.songLoc} controls autoPlay loop>
+                    <source type="audio/mp3" />
+                    Your browser does not support the audio element.
+                  </audio>
+                </MDBRow>
+                <MDBRow className="mx-0 mt-1">
+                  <Dropdown
+                    onChange={e => this.styleDropdown(e)}
+                    title={this.state.style || "Style"}
+                    items={["All","Rock", "Pop", "Acoustic", "Metal", "Electronic"]}
+                  />
+                  <Dropdown
+                    onChange={e => this.moodDropdown(e)}
+                    title={this.state.mood || "Mood"}
+                    items={["All","Happy", "Sad", "Angry", "Indifferent"]}
+                  />
+                </MDBRow>
+                <form>
+                  <SliderPage id="pbr" className="mx-auto mt-1"/>
+                  <p>Playback Rate <span id="currentPbr">1</span></p>
+                </form>
+              </MDBContainer>
+              <MDBContainer>
+                {this.state.filterMusic
+                  // randomizes music
+                  // .sort((a, b) => {return 0.5 - Math.random();})
+                  // displays all music
+                  .map((music, index) => (
+                    <AudioBtn
+                      name={music.title}
+                      key={index}
+                      onClick={playSong.bind(this, music)}
+                      src={music.location}
+                      songTitle={music.title}
+                      id={music.id}
+                    />
+                  ))}
+                </MDBContainer>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
     );
   }
 }

@@ -149,11 +149,11 @@ return (
               <SignUpModalPage /> 
               </MDBCol>  
               </MDBRow>      
+          </MDBCol>
+        </MDBRow>
               {/* <MDBBtn outline rounded color="secondary" type="submit" onClick={this.saveUser}>
                 <MDBIcon icon="user-plus" /> Register
               </MDBBtn> */}
-          </MDBCol>
-        </MDBRow>
       </MDBContainer>
     </MDBMask>
   </MDBView>
