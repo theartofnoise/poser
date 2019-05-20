@@ -3,8 +3,9 @@ import { Link, withRouter} from "react-router-dom";
 import { FormBtn } from "../components/Form";
 import Projects from "../components/Projects";
 import music from "../music.json";
-import { MDBContainer, MDBRow, MDBNavbar, MDBNavbarBrand, MDBNavbarToggler, MDBCollapse, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBIcon, MDBCol } from "mdbreact";
+import { MDBContainer, MDBRow, MDBNavbar, MDBNavbarBrand, MDBNavbarToggler, MDBCollapse, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBIcon, MDBCol, MDBBtn } from "mdbreact";
 import API from '../utils/API'
+
 
 
 class UserProjects extends Component {
@@ -92,23 +93,29 @@ class UserProjects extends Component {
       </MDBNavbar>
       {this.state.collapseID && overlay}
     </div>
-
+        
         <MDBContainer id="mainPad">
         <MDBRow>
           <MDBCol size="sm-12">
-          <MDBRow><h1>Your Projects Here</h1>
-          </MDBRow>
-          <MDBRow><Link to="/main">
-          <FormBtn>New Project</FormBtn>
-          </Link>
-          <FormBtn onClick={this.logOut}>Log Out</FormBtn>
-          </MDBRow>
+            {/* <MDBRow>
+              <h1>Your Projects Here</h1>
+            </MDBRow> */}
+            <MDBRow center>
+              <Link to="/main">
+              <MDBBtn outline rounded color="secondary">
+                New Project
+              </MDBBtn>
+              </Link>
+              <MDBBtn outline rounded color="secondary" onClick={this.logOut}>
+                Log Out
+              </MDBBtn>
+            </MDBRow>
           </MDBCol>
         </MDBRow>
           <MDBRow>
             {this.state.projects.map((project, i) =>{
-            return <MDBCol  key={i} size="md-2"> <Link to={"/main/" + project._id}><Projects onClick={this.loadLyric.bind(this, project.lyricTitle)} author={project.author} title={project.lyricTitle} /></Link>
-                </MDBCol>
+            return <MDBCol  key={i} size="md-4"> <Link to={"/main/" + project._id}><Projects onClick={this.loadLyric.bind(this, project.lyricTitle)} author={project.author} title={project.lyricTitle} /></Link>
+            </MDBCol>
           })}
           </MDBRow>
         </MDBContainer>

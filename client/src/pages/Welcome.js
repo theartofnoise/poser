@@ -93,21 +93,15 @@ class Welcome extends Component {
   render() {
     return (
       <div>
-        {/* <Nav
-          logo={this.state.logo}
-          link1={this.state.link1}
-          link2={this.state.link2}
-        /> */}
-            {this.state.loggedIn ? (
-              <div>
-                <UserProjects projects={this.state.projects} logOut={this.logOut}/>
-              </div>
-            ) : (
-              <div>
-              <MainPageBackground onLoggedIn={this.props.onLoggedIn} />
-          </div> 
-          
-            )}       
+        {this.state.loggedIn ? (
+          <div>
+          <UserProjects projects={this.state.projects} logOut={this.logOut}/>
+          </div>
+          ) : (
+          <div>
+          <MainPageBackground onLoggedIn={this.props.onLoggedIn} />
+          </div>           
+        )}       
       </div>
     );
   }

@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-
-import { Input, TextArea, FormBtn } from "../components/Form";
-
-// import Spotify from "../components/Spotify/Spotify";
+import { TextArea, FormBtn } from "../components/Form";
 import MusicArea from "../components/MusicArea";
-import { MDBCard, MDBCardBody, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBView, MDBContainer, MDBInput } from "mdbreact";
+import { MDBCard, MDBCardBody, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow, MDBCol, MDBIcon, MDBContainer, MDBInput } from "mdbreact";
 
 
 class Main extends Component {
@@ -48,14 +45,7 @@ class Main extends Component {
       [name]: value
     });
   };
-
   
-
-  // music = event => {
-  //   console.log(event);
-  //   this.setState({music: event})
-  // }
-
   save = () => {
     console.log(this.state);
     if (this.state.editing) {
@@ -97,89 +87,84 @@ class Main extends Component {
       );
     return (
       <>
-        <div id="videobackground">        
+      <div id="videobackground">        
         <div>
-
           <MDBNavbar color="bg-secondary" fixed="top" dark expand="md" scrolling transparent className="mb-4">
             <MDBContainer>
               <MDBNavbarBrand>
                 <span className="white-text">Pose</span>
               </MDBNavbarBrand>
-              <MDBNavbarToggler onClick={this.toggleCollapse("navbarCollapse")} />
+              <MDBNavbarToggler onClick={this.toggleCollapse          ("navbarCollapse")} />  
               <MDBCollapse id="navbarCollapse" isOpen=                  {this.state.collapseID} navbar>
-              <MDBNavbarNav left>
-              <MDBNavItem>
-              <MDBNavLink to="/home">Projects</MDBNavLink>
-              </MDBNavItem>  
-              </MDBNavbarNav>
-              <MDBNavbarNav right>
-              <MDBNavItem>
-              <MDBNavLink to="!#">
-                <MDBIcon fab icon="facebook-f" />
-              </MDBNavLink>
-              </MDBNavItem>
-              <MDBNavItem>
-              <MDBNavLink to="!#">
-                <MDBIcon fab icon="twitter" />
-              </MDBNavLink>
-              </MDBNavItem>
-              <MDBNavItem>
-              <MDBNavLink to="!#">
-                <MDBIcon fab icon="instagram" />
-              </MDBNavLink>
-              </MDBNavItem>
-              </MDBNavbarNav>
+                <MDBNavbarNav left>
+                <MDBNavItem>
+                  <MDBNavLink to="/home">Projects</MDBNavLink>
+                  </MDBNavItem>  
+                </MDBNavbarNav>
+                <MDBNavbarNav right>
+                  <MDBNavItem>
+                    <MDBNavLink to="!#">
+                      <MDBIcon fab icon="facebook-f" />
+                    </MDBNavLink>
+                  </MDBNavItem>
+                  <MDBNavItem>
+                    <MDBNavLink to="!#">
+                      <MDBIcon fab icon="twitter" />
+                    </MDBNavLink>
+                  </MDBNavItem>
+                  <MDBNavItem>
+                    <MDBNavLink to="!#">
+                      <MDBIcon fab icon="instagram" />
+                    </MDBNavLink>
+                  </MDBNavItem>
+                </MDBNavbarNav>
               </MDBCollapse>
             </MDBContainer>
           </MDBNavbar> {this.state.collapseID && overlay}
-
         </div>
-
-
         <div overlay="purple-light"  id="mainPad">
         <MDBContainer>  
-        <MDBRow className="mb-4">
-        <MDBCol  md="8" className="mb-r">
-        <MDBCard className="cascading-admin-card .z-depth-4">
-        <div className="admin-up">
-        <MDBIcon icon="edit" className="primary-color"/>
-        <div className="data">
-        <p >CREATE YOUR LYRICS</p>                      
-        </div>
-        </div>
-        <MDBCardBody>
-        <div style={this.border}>
-        <h2>{this.state.lyricTitle}{this.state.author?" by ":""}{this.state.author}</h2>
-        <MDBInput   hint="Your Title"value={this.state.lyricTitle} id="lyricTitle" name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="Your Title" />
-        <MDBInput hint="Author" value={this.state.author} id="author" name="author" type="text" onChange={this.handleInputChange} placeholder="Author" />
-        <TextArea value={this.state.lyrics} id="lyrics" name="lyrics" onChange={this.handleInputChange}></TextArea>
-        <FormBtn onClick={this.save}>Save</FormBtn>
-        </div>
-        </MDBCardBody>
-        </MDBCard>
-        </MDBCol>
-        <MDBCol md="4" className="mb-r">
-        <MDBCard className="cascading-admin-card">
-        <div className="admin-up">
-        <MDBIcon icon="music" className="primary-color"/>
-        <div className="data">
-        <p>CHOOSE YOUR INSPIRATION</p>
-        </div>
-        </div>
-        <MDBCardBody>
-        <div style={this.border}>
-        <MusicArea func={this.music}/>
-        </div>
-        </MDBCardBody>
-        </MDBCard>
-        </MDBCol>
-        </MDBRow>            
+          <MDBRow className="mb-4">
+            <MDBCol  md="8" className="mb-r">
+            <MDBCard className="cascading-admin-card .z-depth-4">
+            <div className="admin-up">
+            <MDBIcon icon="edit" className="primary-color"/>
+            <div className="data">
+            <p >CREATE YOUR LYRICS</p>                      
+            </div>
+            </div>
+            <MDBCardBody>
+              <div style={this.border}>
+                <h2>{this.state.lyricTitle}{this.state.author?" by ":""}{this.state.author}</h2>
+                <MDBInput hint="Your Title"value={this.state.lyricTitle} id="lyricTitle" name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="Your Title" />
+                <MDBInput hint="Author" value={this.state.author} id="author" name="author" type="text" onChange={this.handleInputChange} placeholder="Author" />
+                <TextArea value={this.state.lyrics} id="lyrics" name="lyrics" onChange={this.handleInputChange}></TextArea>
+                <FormBtn onClick={this.save}>Save</FormBtn>
+                
+              </div>
+            </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+          <MDBCol md="4" className="mb-r">
+            <MDBCard className="cascading-admin-card">
+              <div className="admin-up">
+              <MDBIcon icon="music" className="primary-color"/>
+              <div className="data">
+              <p>CHOOSE YOUR INSPIRATION</p>
+              </div>
+              </div>
+              <MDBCardBody>
+                <div style={this.border}>
+                <MusicArea func={this.music}/>
+                </div>
+              </MDBCardBody>
+            </MDBCard>
+            </MDBCol>
+          </MDBRow>            
         </MDBContainer>  
         </div>
-        </div>
+      </div>
       </>
-
-        
     );
   }
 }
