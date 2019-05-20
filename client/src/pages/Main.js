@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { TextArea, FormBtn } from "../components/Form";
 import MusicArea from "../components/MusicArea";
-import { MDBCard, MDBCardBody, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow, MDBCol, MDBIcon, MDBContainer, MDBInput } from "mdbreact";
+import { MDBCard, MDBCardBody, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow, MDBCol, MDBIcon, MDBContainer, MDBInput, MDBBtn } from "mdbreact";
 
 
 class Main extends Component {
@@ -139,7 +139,7 @@ class Main extends Component {
                 <MDBInput hint="Your Title"value={this.state.lyricTitle} id="lyricTitle" name="lyricTitle" type="text" onChange={this.handleInputChange} placeholder="Your Title" />
                 <MDBInput hint="Author" value={this.state.author} id="author" name="author" type="text" onChange={this.handleInputChange} placeholder="Author" />
                 <TextArea value={this.state.lyrics} id="lyrics" name="lyrics" onChange={this.handleInputChange}></TextArea>
-                <FormBtn onClick={this.save}>Save</FormBtn>
+                <MDBBtn color="primary" onClick={this.save}>Save</MDBBtn>
                 
               </div>
             </MDBCardBody>
