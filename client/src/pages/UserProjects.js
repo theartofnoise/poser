@@ -123,6 +123,7 @@ class UserProjects extends Component {
             return (
             <MDBCol  key={i} size="md-4"> 
                 <Projects 
+                  lyrics={project.lyrics}
                   onClick={this.deleteLyric.bind(this, project._id)}
                   author={project.author} 
                   title={project.lyricTitle}
