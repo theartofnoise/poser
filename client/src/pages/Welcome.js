@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import UserProjects from "./UserProjects";
-
-import Jumbo from '../components/Jumbotron';
 import { withRouter} from "react-router-dom";
-import {  MDBInput, MDBCard, MDBCardBody, MDBBtn, MDBRow, MDBCol, MDBCardImage, MDBCardTitle, MDBCardText } from 'mdbreact';
 import MainPageBackground from '../components/MainPageBackground'
 
 class Welcome extends Component {

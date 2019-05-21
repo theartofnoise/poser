@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { TextArea, FormBtn } from "../components/Form";
 import MusicArea from "../components/MusicArea";
-import { MDBCard, MDBCardBody, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow, MDBCol, MDBIcon, MDBContainer, MDBInput } from "mdbreact";
+import { MDBCard, MDBCardBody, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBRow, MDBCol, MDBIcon, MDBContainer, MDBInput } from "mdbreact";
 
 
 class Main extends Component {
@@ -26,13 +26,12 @@ class Main extends Component {
     if (this.props.match.params.id) {
     API.getLyricById(this.props.match.params.id)
       .then( (res) => {
-        console.log(res);
+        console.log(res.data);
         this.setState({ lyrics: res.data.lyrics,
                         author: res.data.author,
                         lyricTitle: res.data.lyricTitle });
         this.setState({ lyricData: res.data,
-        editing:true });
-        console.log( this.state.lyricData );
+        editing:true, music: res.data.music });
       })
       .catch(err => console.log(err));
     }
@@ -46,6 +45,10 @@ class Main extends Component {
     });
   };
   
+  music = url => {
+    this.setState({music : url});
+}
+
   save = () => {
     console.log(this.state);
     if (this.state.editing) {
@@ -155,7 +158,7 @@ class Main extends Component {
               </div>
               <MDBCardBody>
                 <div style={this.border}>
-                <MusicArea func={this.music}/>
+                <MusicArea music={this.state.music} func={this.music}/>
                 </div>
               </MDBCardBody>
             </MDBCard>

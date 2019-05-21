@@ -4,7 +4,7 @@ import Dropdown from "../Dropdown";
 // import music from "../../music.json";
 import API from "../../utils/API";
 import SliderPage from "../Slider"
-import { MDBRow, MDBContainer, MDBCol, MDBCard } from "mdbreact";
+import { MDBRow, MDBContainer, MDBCol } from "mdbreact";
 
 
 class MusicArea extends Component {
@@ -14,13 +14,19 @@ class MusicArea extends Component {
     filterMusic: [],
     style: "",
     mood: "",
-    songLoc:"",
+    songLoc:"/"+this.props.music,
     sound:document.getElementById("myAudio"),
   };
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({songLoc:"/"+nextProps.music})
+  }
+  
+
   componentDidMount() {
-    // style = this.state.style;
-    // mood = this.state.mood;
+    console.log(this.props.music);
+    console.log(this.state.songLoc);
+    // sets the pitch
   var a = document.getElementById("myAudio");
   var p = document.getElementById("pbr");
   var c = document.getElementById("currentPbr");
@@ -31,8 +37,9 @@ class MusicArea extends Component {
     a.defaultPlaybackRate  = 1;
     p.defaultValue = 1;
   },false);
+  // get all music from db
     API.getMusic()
-      .then(res => {
+    .then(res => {
         this.setState({ dbMusic: res.data, filterMusic: res.data });
       })
       .catch(err => console.log(err));
@@ -41,7 +48,7 @@ class MusicArea extends Component {
  styleDropdown = (e) => {
    console.log(e);
    this.setState({ style: e })
-   if (e == "All") {
+   if (e === "All") {
      this.setState({filterMusic:this.state.dbMusic})
    } else {
    let array = this.state.dbMusic;
@@ -49,13 +56,12 @@ class MusicArea extends Component {
      return (element.style === e)
    }) 
    this.setState({ filterMusic: filter});
-   console.log(this.state.dbMusic);
    }
 }
 
  moodDropdown = (e) => {
   this.setState({ mood: e })
-   if (e == "All") {
+   if (e === "All") {
      this.setState({filterMusic:this.state.dbMusic})
    } else {
    let array = this.state.dbMusic;
@@ -63,16 +69,18 @@ class MusicArea extends Component {
      return (element.mood === e)
    }) 
    this.setState({ filterMusic: filter});
-   console.log(this.state.dbMusic);
    }
   }
 
-  render(props) {
-    // this.props.func(song.title);
-    const playSong = song => {
-      this.setState({ songLoc: "/"+song.location });
-    };
+  playSong = song => {
+    this.props.func(song.location);
+    console.log(song.location);
+    this.setState({ songLoc: "/"+song.location });
+    console.log(this.props.music);
+  };
 
+  render() {
+    
    
 
     return (
@@ -112,7 +120,7 @@ class MusicArea extends Component {
                     <AudioBtn
                       name={music.title}
                       key={index}
-                      onClick={playSong.bind(this, music)}
+                      onClick={this.playSong.bind(this, music)}
                       src={music.location}
                       songTitle={music.title}
                       id={music.id}
