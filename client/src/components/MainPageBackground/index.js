@@ -1,7 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask,
-  MDBRow, MDBCol, MDBIcon, MDBBtn, MDBView, MDBContainer, MDBInput, mdbnav, MDBNav } from "mdbreact";
+  MDBRow, MDBCol, MDBIcon, MDBBtn, MDBView, MDBContainer } from "mdbreact";
 import "./style.css";
 import ModalPage from '../Modal'
 import API from "../../utils/API"
