@@ -3,7 +3,7 @@ import API from "../utils/API";
 import { TextArea, FormBtn } from "../components/Form";
 import MusicArea from "../components/MusicArea";
 
-import { MDBCard, MDBCardBody, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBRow, MDBCol, MDBIcon, MDBContainer, MDBInput } from "mdbreact";
+import { MDBBtn, MDBCard, MDBCardBody, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBRow, MDBCol, MDBIcon, MDBContainer, MDBInput } from "mdbreact";
 
 
 

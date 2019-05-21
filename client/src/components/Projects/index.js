@@ -24,11 +24,10 @@ function Projects(props) {
             className="text-center blue-text font-weight-bold text-uppercase" ><h5>{props.title}</h5></MDBCardTitle>
             <hr />
       <MDBCardTitle tag="h6" sub className="mb-2 text-muted">
-        Author: {props.author}
+        By: {props.author}
       </MDBCardTitle>
       <MDBCardText>
-        Some quick example text to build on the panel title and make up
-        the bulk of the panel's content.{" "}
+        {props.lyrics}{" "}
       </MDBCardText>
       <Link to={"/main/" + props.id}>
       <MDBBtn className="blue-gradient" >Edit</MDBBtn>
