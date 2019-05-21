@@ -13,8 +13,13 @@ router
   
   router
   .route("/lyrics/:id")
+  .delete(lyricsController.remove)
   .put(lyricsController.update)
-  .get(lyricsController.getLyricById)
-  .delete(lyricsController.remove);
+  .get(lyricsController.getLyricById);
+
+  // router.post("/delete/:id", (req, res)=> {
+  //   console.log("Backend")
+  //   res.json({ message : "here"})
+  // })
 
 module.exports = router;

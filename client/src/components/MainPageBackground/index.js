@@ -40,15 +40,9 @@ debugger;
       userEmail: this.state.userEmail
     }).then(res => {
       if(res.data){
-        // this.setState({
-        //   loggedIn: true,
-        //   link1: "main",
-        //   userId: res.data._id,
-        // })
         localStorage.setItem("userEmail", this.state.userEmail);
         localStorage.setItem("userPassword", this.state.userPassword);
         this.props.onLoggedIn();
-        //this.loadLyrics();
       } else {
         alert("wrong user name or pasword");
       }

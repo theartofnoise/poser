@@ -11,7 +11,8 @@ class UserProjects extends Component {
   state = {
     music,
     projects:[],
-    userEmail: localStorage.getItem("userEmail")
+    userEmail: localStorage.getItem("userEmail"),
+    refresh: false,
   };
 
   handleInputChange = event => {
@@ -30,7 +31,7 @@ class UserProjects extends Component {
     console.log(event);
   }
 
-  // Gets all the lyrics for the email thats logged in
+  // Gets ALL the lyrics for the email thats logged in
   loadLyrics() {
     API.getLyric(this.state.userEmail)
       .then(res => {
@@ -42,6 +43,14 @@ class UserProjects extends Component {
   componentDidMount() {
     this.loadLyrics();
   }  
+
+  deleteLyric = (id)=> {
+    API.deleteLyric(id)
+      .then(res =>{ console.log(res);
+        this.loadLyrics();})
+      .catch(err => console.log(err));
+    
+  }
 
   logOut = () => {
     localStorage.removeItem("userEmail")
@@ -96,9 +105,6 @@ class UserProjects extends Component {
         <MDBContainer id="mainPad">
         <MDBRow>
           <MDBCol size="sm-12">
-            {/* <MDBRow>
-              <h1>Your Projects Here</h1>
-            </MDBRow> */}
             <MDBRow center>
               <Link to="/main">
               <MDBBtn outline rounded color="secondary">
@@ -112,16 +118,15 @@ class UserProjects extends Component {
           </MDBCol>
         </MDBRow>
           <MDBRow>
+            {/* maps out the projects on project page */}
             {this.state.projects.map((project, i) =>{
             return (
             <MDBCol  key={i} size="md-4"> 
-              <Link 
-                to={"/main/" + project._id}>
                 <Projects 
-                  onClick={this.loadLyric.bind(this, project.lyricTitle)} 
+                  onClick={this.deleteLyric.bind(this, project._id)}
                   author={project.author} 
-                  title={project.lyricTitle} />
-              </Link>
+                  title={project.lyricTitle}
+                  id={project._id} />
             </MDBCol>)
           })}
           </MDBRow>

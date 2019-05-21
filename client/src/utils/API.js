@@ -13,6 +13,18 @@ export default {
   deleteUser: function(id) {
     return axios.delete("/api/users/" + id);
   },
+  deleteLyric: async function(id) {
+    console.log("front end API")
+    try {
+      const response = await axios({
+        method: "DELETE",
+        url: "/api/lyrics/lyrics/" + id
+      })
+      return response
+    } catch (error) {
+      console.log(error)
+    }
+  },
   //login USER
   loginUser: function(data){
     return axios.post('/api/users/login', data)
