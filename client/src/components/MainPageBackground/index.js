@@ -73,12 +73,12 @@ return (
           <MDBNavbarToggler onClick={this.toggleCollapse("navbarCollapse")} />
           <MDBCollapse id="navbarCollapse" isOpen={this.state.collapseID} navbar>
             <MDBNavbarNav left>
-              <MDBNavItem>
+              {/* <MDBNavItem>
                 <MDBNavLink to="#!">Home</MDBNavLink>
               </MDBNavItem>              
               <MDBNavItem>
                 <MDBNavLink to="#!">Contact</MDBNavLink>
-              </MDBNavItem>
+              </MDBNavItem> */}
             </MDBNavbarNav>
             <MDBNavbarNav right>
               <MDBNavItem>
@@ -140,11 +140,11 @@ return (
             <MDBIcon icon="sign-in-alt" /> Log in
             </MDBBtn> */}
             <MDBRow>
-            <MDBCol md="6">
+            <MDBCol sm="12" md="6" className="text-right">
               <MDBBtn outline rounded color="secondary" onClick={()=>this.setState({login:true})}><MDBIcon icon="sign-in-alt" /> LOG In</MDBBtn>
               <ModalPage  onClose={()=>this.setState({login:false})} open={this.state.login} onLoggedIn={this.props.onLoggedIn} />
               </MDBCol>   
-              <MDBCol md="6">
+              <MDBCol sm="12" md="6" className="text-left">
               <SignUpModalPage /> 
               </MDBCol>  
               </MDBRow>      
