@@ -49,6 +49,18 @@ debugger;
     })
 };
 
+saveUser = (email, password, event) => {
+  event.preventDefault();
+  API.saveUser({
+    userEmail: email,
+    userPassword: password,
+  })
+    .then(res => {
+       this.setState({openModal: false})      
+    })
+    .catch(err => console.log(err));
+};
+
 render() {
 const overlay = (
 <div id="sidenav-overlay" style={{ backgroundColor: "transparent" }} onClick={this.toggleCollapse("navbarCollapse")} />
@@ -139,7 +151,8 @@ return (
               <ModalPage  onClose={()=>this.setState({login:false})} open={this.state.login} onLoggedIn={this.props.onLoggedIn} />
               </MDBCol>   
               <MDBCol sm="12" md="6" className="text-left">
-              <SignUpModalPage /> 
+              <SignUpModalPage isOpen={this.state.openModal} saveUser={this.saveUser}/> 
+              <MDBBtn outline rounded color="secondary" onClick={()=>this.setState({openModal: true})}><MDBIcon icon="user-plus" /> Register</MDBBtn>
               </MDBCol>  
               </MDBRow>      
           </MDBCol>
@@ -152,7 +165,7 @@ return (
   </MDBView>
   
 
-  <MDBContainer>        
+  {/* <MDBContainer>        
     <MDBRow className="pt-5 pb-4">
       <MDBCol md="12" className="text-center">
         <p>
@@ -184,7 +197,7 @@ return (
         </p>    
       </MDBCol>
     </MDBRow>
-  </MDBContainer>
+  </MDBContainer> */}
   </div>
 </div>
 );
