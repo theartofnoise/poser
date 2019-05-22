@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import { TextArea, FormBtn } from "../components/Form";
+import { TextArea } from "../components/Form";
 import MusicArea from "../components/MusicArea";
 
 import { MDBBtn, MDBCard, MDBCardBody, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBRow, MDBCol, MDBIcon, MDBContainer, MDBInput } from "mdbreact";
@@ -28,7 +28,6 @@ class Main extends Component {
     if (this.props.match.params.id) {
     API.getLyricById(this.props.match.params.id)
       .then( (res) => {
-        console.log(res.data);
         this.setState({ lyrics: res.data.lyrics,
                         author: res.data.author,
                         lyricTitle: res.data.lyricTitle });
@@ -52,7 +51,6 @@ class Main extends Component {
 }
 
   save = () => {
-    console.log(this.state);
     if (this.state.editing) {
     API.updateLyric(this.props.match.params.id, {
       userEmail: this.state.userEmail,

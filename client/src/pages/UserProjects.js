@@ -26,10 +26,6 @@ class UserProjects extends Component {
     event.preventDefault();
     alert("Submitted");
   };
-  
-  loadLyric = (event) => {
-    console.log(event);
-  }
 
   // Gets ALL the lyrics for the email thats logged in
   loadLyrics() {
@@ -123,6 +119,7 @@ class UserProjects extends Component {
             return (
             <MDBCol  key={i} size="md-4"> 
                 <Projects 
+                  date={project.date}
                   lyrics={project.lyrics}
                   onClick={this.deleteLyric.bind(this, project._id)}
                   author={project.author} 

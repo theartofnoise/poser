@@ -1,0 +1,21 @@
+.theCard {
+    width: 22rem;
+    margin-top: 1rem;
+}
+
+.cardText {
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 4; 
+   line-height: 1.2rem;       
+   max-height: 2.2rem;      
+}
+
+/* @media only screen and (max-width: 1080px) {
+    .theCard {
+        width: inherit;
+        margin-top: 1rem;
+    }
+  } */

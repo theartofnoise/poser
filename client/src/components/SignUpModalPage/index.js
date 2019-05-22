@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBIcon, MDBInput, MDBCol } from 'mdbreact';
-import API from '../../utils/API'
 
 class SignUpModalPage extends Component {
 state = {
@@ -23,20 +22,6 @@ handleInputChange = event => {
   });
 };
 
-// saveUser = (event) => {
-//   event.preventDefault();
-//   API.saveUser({
-//     userEmail: this.state.userEmail,
-//     userPassword: this.state.userPassword,
-//   })
-//     .then(res => {
-//       this.setState({
-//       userEmail: "",
-//       userPassword: ""})
-//       this.findUser(res)      
-//     })
-//     .catch(err => console.log(err));
-// };
 
 render() {
   return (

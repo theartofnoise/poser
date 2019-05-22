@@ -24,8 +24,6 @@ class MusicArea extends Component {
   
 
   componentDidMount() {
-    console.log(this.props.music);
-    console.log(this.state.songLoc);
     // sets the pitch
   var a = document.getElementById("myAudio");
   var p = document.getElementById("pbr");
@@ -46,7 +44,6 @@ class MusicArea extends Component {
   }
 
  styleDropdown = (e) => {
-   console.log(e);
    this.setState({ style: e })
    if (e === "All") {
      this.setState({filterMusic:this.state.dbMusic})
@@ -74,9 +71,7 @@ class MusicArea extends Component {
 
   playSong = song => {
     this.props.func(song.location);
-    console.log(song.location);
     this.setState({ songLoc: "/"+song.location });
-    console.log(this.props.music);
   };
 
   render() {
