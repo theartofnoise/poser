@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBContainer, MDBBtn } from "mdbreact";
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBContainer, MDBBtn, MDBCol } from "mdbreact";
 import { Link, withRouter} from "react-router-dom";
 import API from '../../utils/API'
 
@@ -21,7 +21,7 @@ function Projects(props) {
   <MDBCard style={{ width: "22rem", marginTop: "1rem" }}>
     <MDBCardBody>
       <MDBCardTitle 
-            className="text-center blue-text font-weight-bold text-uppercase" ><h5>{props.title}</h5></MDBCardTitle>
+            className="text-center blue-text font-weight-bold text-uppercase" ><h3>{props.title}</h3></MDBCardTitle>
             <hr />
       <MDBCardTitle tag="h6" sub className="mb-2 text-muted">
         By: {props.author}
@@ -29,11 +29,14 @@ function Projects(props) {
       <MDBCardText>
         {props.lyrics}{" "}
       </MDBCardText>
-      <Link to={"/main/" + props.id}>
-      <MDBBtn className="blue-gradient" >Edit</MDBBtn>
-      </Link>
-      <MDBBtn onClick={props.onClick} className="peach-gradient float-right">Delete</MDBBtn>
-      {/* <MDBBtn onClick={()=>deleteBtn(props.id)} className="peach-gradient float-right">Delete</MDBBtn> */}
+      <MDBContainer>  
+        <MDBCol className="text-center">
+          <Link to={"/main/" + props.id}>
+          <MDBBtn className="blue-gradient" >Edit</MDBBtn>
+          </Link>
+          <MDBBtn onClick={props.onClick} className="blue-gradient">Delete</MDBBtn>
+        </MDBCol>
+      </MDBContainer>
     </MDBCardBody>
   </MDBCard>
 </MDBContainer>
