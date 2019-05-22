@@ -13,8 +13,6 @@ const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg)
 function Projects(props) {
   const [prop, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }))
 
-  // const prop = useSpring({opacity: 1, from: {opacity: 0}})
-
   return (
     <MDBContainer>
     <animated.div class="cards"
