@@ -16,17 +16,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pose");
-mongoose.connect("mongodb://heroku_xtf1n2nd:8r9baqnu8i3gu361gnqt5vr3hh@ds163718.mlab.com:63718/heroku_xtf1n2nd" || "mongodb://localhost/pose");
-
-// Connect to the Mongo DB
-// mongoose.Promise = Promise;
-// if(process.env.MONGODB_URI) {
-//     mongoose.connect(process.env.MONGODB_URI)
-// } else {
-//     mongoose.connect("mongodb://localhost/pose", { useNewUrlParser: true });
-// }
-
+mongoose.connect(process.env.REACT_APP_MONGODB_URI || "mongodb://localhost/pose");
 
 
 // Start the API server
