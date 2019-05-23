@@ -14,7 +14,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
     "predeploy": "npm run build",
-    "deploy": "npm build && gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
