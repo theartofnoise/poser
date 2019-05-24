@@ -16,7 +16,8 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.REACT_APP_MONGODB_URI || "mongodb://localhost/pose");
+// mongoose.connect(process.env.REACT_APP_MONGODB_URI || "mongodb://localhost/pose");
+mongoose.connect("mongodb://localhost/pose");
 
 
 // Start the API server
