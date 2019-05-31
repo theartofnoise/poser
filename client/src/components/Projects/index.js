@@ -15,7 +15,7 @@ function Projects(props) {
 
   return (
     <MDBContainer>
-    <animated.div class="cards"
+    <animated.div className="cards"
     onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
     onMouseLeave={() => set({ xys: [0, 0, 1] })}
     style={{ transform: prop.xys.interpolate(trans) }}>
